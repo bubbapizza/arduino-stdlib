@@ -1,0 +1,21 @@
+This is an autotools package for building and installing the arduino
+libraries.  It will install the libraries in a directory name based
+on the MMCU and MHz specified in the configure script.
+
+To compile the libraries, you must have the following packages installed:
+
+   gcc-avr
+   avr-libc
+
+In a nutshell, to install the libraries, run the following commands:
+
+   ./configure --prefix=<installdir> --host=avr \ 
+      MMCU=<mmcu-type> MHZ=<mmcu-speed-in-MHz>
+   make
+   sudo make install
+
+By default MMCU/MHZ defaults to atmega328p and 16 which is for an 
+Arduino Uno. 
+
+Shawn Wilson
+Dec 2011
