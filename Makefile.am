@@ -35,9 +35,9 @@ libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 
 ARDUINOLIB = libarduino.a
 ARDUINOHEADERS = WProgram.h wiring.h WCharacter.h WString.h \
-   HardwareSerial.h binary.h Print.h
+   HardwareSerial.h binary.h Print.h Stream.h 
 ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h \
-   pins_arduino.h Stream.h 
+   pins_arduino.h
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp pins_arduino.c wiring_analog.c wiring_digital.c \
    wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c
@@ -65,11 +65,11 @@ libEEPROM_a_SOURCES = EEPROM.cpp
 
 ####### ETHERNET ########
 
-ETHERNETLIB = libEthernet.a
-ETHERNETHEADERS = Ethernet.h Client.h Server.h Udp.h
+ETHERNETLIB = libEthernet.a 
+ETHERNETHEADERS = Ethernet.h Client.h Server.h Udp.h 
 ETHERNETEXTRAHEADERS = utility/w5100.h utility/socket.h
 libEthernet_a_SOURCES = Ethernet.cpp Client.cpp Server.cpp Udp.cpp \
-   utility/socket.cpp utility/w5100.cpp 
+   utility/socket.cpp utility/w5100.cpp SPI.cpp
 
 
 ####### FIRMATA ########
@@ -177,3 +177,9 @@ util_HEADERS = $(SDUTILHEADERS)
 # installed.
 EXTRA_DIST = $(ARDUINOEXTRAHEADERS) $(ARDUINOTESTSUITEEXTRAHEADERS) \
    $(ETHERNETEXTRAHEADERS) $(WIREEXTRAHEADERS)
+
+
+# When uninstalling, blow away the include/utility directory and the 
+# lib/mmcu-mhz directory.
+uninstall-hook:
+	rm -Rf $(utildir) $(libcpudir)

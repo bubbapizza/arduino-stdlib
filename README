@@ -9,8 +9,7 @@ To compile the libraries, you must have the following packages installed:
 
 In a nutshell, to install the libraries, run the following commands:
 
-   ./configure --prefix=<installdir> --host=avr \ 
-      MMCU=<mmcu-type> MHZ=<mmcu-speed-in-MHz>
+   ./configure --prefix=<installdir> MMCU=<mmcu-type> MHZ=<mmcu-speed-in-MHz>
    make
    sudo make install
 
