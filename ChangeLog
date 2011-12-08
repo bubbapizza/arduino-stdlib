@@ -1,0 +1,5 @@
+=== v0022-1 ===
+- added main.cpp to the arduino lib.  This way pde files only have to 
+  have headers added since main.o will get linked in with libarduino.a.
+=== v0022-0 ===
+- First try at converting arduino-0022 sources into standard libs
