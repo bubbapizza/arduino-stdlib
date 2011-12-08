@@ -1,4 +1,3 @@
-#
 # Copyright (c) 2004,  Theodore A. Roth
 # Copyright (c) 2005,2006,2007,2009  Anatoly Sokolov
 # Copyright (c) 2005,2008  Joerg Wunsch
@@ -39,7 +38,7 @@
 # the normal install process.
 #
 
-AC_INIT(arduino-stdlib, 0023-0)
+AC_INIT(arduino-stdlib, 1.0-0)
 AC_PREREQ(2.59)
 
 # Set the default --host parameter to 'avr'.
@@ -144,6 +143,10 @@ AC_ARG_VAR(MMCU, "Default processor type.")
 AC_SUBST(MMCU, [${MMCU:-'atmega328p'}])
 AC_ARG_VAR(MHZ, "Default processor speed in MHz.")
 AC_SUBST(MHZ, [${MHZ:-'16'}])
+
+# This is a new variable needed for pins_arduino.h variants.
+AC_ARG_VAR(VARIANT, "Default arduino variant.")
+AC_SUBST(VARIANT, [${VARIANT:-'standard'}])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

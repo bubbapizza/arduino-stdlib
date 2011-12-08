@@ -1,6 +1,8 @@
 /*
-  EEPROM.h - EEPROM library
-  Copyright (c) 2006 David A. Mellis.  All right reserved.
+  pins_arduino.h - Pin definition functions for Arduino
+  Part of Arduino - http://www.arduino.cc/
+
+  Copyright (c) 2007 David A. Mellis
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -12,24 +14,14 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
 
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  You should have received a copy of the GNU Lesser General
+  Public License along with this library; if not, write to the
+  Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+  Boston, MA  02111-1307  USA
+
+  $Id: wiring.h 249 2007-02-03 16:52:51Z mellis $
 */
 
-#ifndef EEPROM_h
-#define EEPROM_h
-
-#include <inttypes.h>
-
-class EEPROMClass
-{
-  public:
-    uint8_t read(int);
-    void write(int, uint8_t);
-};
-
-extern EEPROMClass EEPROM;
-
-#endif
-
+#include "../standard/pins_arduino.h"
+#undef NUM_ANALOG_INPUTS
+#define NUM_ANALOG_INPUTS           8

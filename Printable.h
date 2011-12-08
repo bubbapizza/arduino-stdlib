@@ -1,6 +1,6 @@
 /*
-  Matrix.h - Max7219 LED Matrix library for Arduino & Wiring
-  Copyright (c) 2006 Nicholas Zambetti.  All right reserved.
+  Printable.h - Interface class that allows printing of complex types
+  Copyright (c) 2011 Adrian McEwen.  All right reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -17,37 +17,23 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef Matrix_h
-#define Matrix_h
+#ifndef Printable_h
+#define Printable_h
 
-#include <inttypes.h>
+#include <new.h>
 
-class Sprite;
+class Print;
 
-class Matrix
+/** The Printable class provides a way for new classes to allow themselves to be printed.
+    By deriving from Printable and implementing the printTo method, it will then be possible
+    for users to print out instances of this class by passing them into the usual
+    Print::print and Print::println methods.
+*/
+
+class Printable
 {
-  private:
-    uint8_t _pinData;
-    uint8_t _pinClock;
-    uint8_t _pinLoad;
-
-    uint8_t* _buffer;
-    uint8_t _screens;
-    uint8_t _maximumX;
-
-    void putByte(uint8_t);
-    void setRegister(uint8_t, uint8_t);
-    void syncRow(uint8_t);
-
-    void setScanLimit(uint8_t);
-
-    void buffer(uint8_t, uint8_t, uint8_t);
   public:
-    Matrix(uint8_t, uint8_t, uint8_t, uint8_t = 1);
-    void setBrightness(uint8_t);
-    void write(uint8_t, uint8_t, uint8_t);
-    void write(uint8_t, uint8_t, Sprite);
-    void clear(void);
+    virtual size_t printTo(Print& p) const = 0;
 };
 
 #endif

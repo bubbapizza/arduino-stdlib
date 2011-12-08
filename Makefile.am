@@ -35,12 +35,16 @@ libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 
 ARDUINOLIB = libarduino.a
 ARDUINOHEADERS = WProgram.h wiring.h WCharacter.h WString.h \
-   HardwareSerial.h binary.h Print.h Stream.h 
-ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h \
-   pins_arduino.h
+   HardwareSerial.h binary.h Print.h Stream.h Arduino.h \
+   variants/$(VARIANT)/pins_arduino.h 
+ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
+   Server.h USBAPI.h IPAddress.h Printable.h Stream.h USBCore.h \
+   Client.h new.h Udp.h USBDesc.h  
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
-   Print.cpp  WMath.cpp pins_arduino.c wiring_analog.c wiring_digital.c \
-   wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c
+   Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
+   wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c main.cpp \
+   CDC.cpp IPAddress.cpp USBCore.cpp Stream.cpp HID.cpp new.cpp  
+
 
 
 ####### ARDUINOTESTSUITE ########
