@@ -45,7 +45,7 @@ http://www.arduino.cc/en/Tutorial/Stepper
  */
 
 
-#include <WProgram.h>
+#include "WProgram.h"
 #include "Stepper.h"
 
 /*

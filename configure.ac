@@ -39,7 +39,7 @@
 # the normal install process.
 #
 
-AC_INIT(arduino-stdlib, 0022-0)
+AC_INIT(arduino-stdlib, 0023-0)
 AC_PREREQ(2.59)
 
 # Set the default --host parameter to 'avr'.

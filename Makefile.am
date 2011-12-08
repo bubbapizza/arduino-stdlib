@@ -67,7 +67,7 @@ libEEPROM_a_SOURCES = EEPROM.cpp
 
 ETHERNETLIB = libEthernet.a 
 ETHERNETHEADERS = Ethernet.h Client.h Server.h Udp.h 
-ETHERNETEXTRAHEADERS = utility/w5100.h utility/socket.h
+ETHERNETEXTRAHEADERS = w5100.h socket.h
 libEthernet_a_SOURCES = Ethernet.cpp Client.cpp Server.cpp Udp.cpp \
    utility/socket.cpp utility/w5100.cpp SPI.cpp
 
@@ -151,7 +151,7 @@ libStepper_a_SOURCES = Stepper.cpp
 
 WIRELIB = libWire.a
 WIREHEADERS = Wire.h
-WIREEXTRAHEADERS = utility/twi.h
+WIREEXTRAHEADERS = twi.h
 libWire_a_SOURCES = Wire.cpp utility/twi.c
 
 

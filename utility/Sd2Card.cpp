@@ -18,7 +18,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 #include <WProgram.h>
-#include <utility/Sd2Card.h>
+#include "Sd2Card.h"
 //------------------------------------------------------------------------------
 #ifndef SOFTWARE_SPI
 // functions for hardware SPI

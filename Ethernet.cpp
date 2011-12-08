@@ -1,4 +1,4 @@
-#include "utility/w5100.h"
+#include "w5100.h"
 #include "Ethernet.h"
 
 // XXX: don't make assumptions about the value of MAX_SOCK_NUM.
