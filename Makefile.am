@@ -40,7 +40,7 @@ ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h \
    pins_arduino.h
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp pins_arduino.c wiring_analog.c wiring_digital.c \
-   wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c
+   wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c main.cpp
 
 
 ####### ARDUINOTESTSUITE ########

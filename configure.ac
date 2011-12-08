@@ -1,4 +1,3 @@
-#
 # Copyright (c) 2004,  Theodore A. Roth
 # Copyright (c) 2005,2006,2007,2009  Anatoly Sokolov
 # Copyright (c) 2005,2008  Joerg Wunsch
@@ -39,7 +38,7 @@
 # the normal install process.
 #
 
-AC_INIT(arduino-stdlib, 0022-0)
+AC_INIT(arduino-stdlib, 0022-1)
 AC_PREREQ(2.59)
 
 # Set the default --host parameter to 'avr'.
