@@ -34,29 +34,22 @@ libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 ####### ARDUINO ########
 
 ARDUINOLIB = libarduino.a
-ARDUINOHEADERS = WProgram.h wiring.h WCharacter.h WString.h \
-   HardwareSerial.h binary.h Print.h Stream.h Arduino.h \
+
+# These headers are the headers that get installed so apps can link
+# to libarduino.h
+ARDUINOHEADERS = Arduino.h binary.h WCharacter.h WString.h \
+   HardwareSerial.h Stream.h USBAPI.h Print.h WString.h Printable.h \
    variants/$(VARIANT)/pins_arduino.h 
+
+# These headers need to be included in the distribution so we can compile
+# the libarduino.a sources.
 ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
-   Server.h USBAPI.h IPAddress.h Printable.h Stream.h USBCore.h \
-   Client.h new.h Udp.h USBDesc.h  
+   IPAddress.h Printable.h Stream.h USBCore.h new.h USBDesc.h  
+
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
    wiring_shift.c wiring.c wiring_pulse.c WInterrupts.c main.cpp \
    CDC.cpp IPAddress.cpp USBCore.cpp Stream.cpp HID.cpp new.cpp  
-
-
-
-####### ARDUINOTESTSUITE ########
-
-# Technically, I don't think avr_cpunames.h needs to be included
-# in the installed headers because no other headers use it but 
-# if you write an app using the Arduino IDE, it includes it.
-
-ARDUINOTESTSUITELIB = libArduinoTestSuite.a
-ARDUINOTESTSUITEHEADERS = ArduinoTestSuite.h avr_cpunames.h
-ARDUINOTESTSUITEEXTRAHEADERS = 
-libArduinoTestSuite_a_SOURCES = ArduinoTestSuite.cpp
 
 
 ####### EEPROM ########

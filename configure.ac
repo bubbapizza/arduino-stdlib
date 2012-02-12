@@ -139,14 +139,15 @@ AC_PROG_INSTALL
 # Allow the user to specify the AVR CPU type an speed in megahertz.
 # By default, we set the AVR CPU type to be an Arduino Uno.
 #
-AC_ARG_VAR(MMCU, "Default processor type.")
+AC_ARG_VAR(MMCU, "AVR processor type. (Default is atmega328p)")
 AC_SUBST(MMCU, [${MMCU:-'atmega328p'}])
-AC_ARG_VAR(MHZ, "Default processor speed in MHz.")
+AC_ARG_VAR(MHZ, "AVR processor speed in MHz. (Default is 16)")
 AC_SUBST(MHZ, [${MHZ:-'16'}])
 
 # This is a new variable needed for pins_arduino.h variants.
-AC_ARG_VAR(VARIANT, "Default arduino variant.")
+AC_ARG_VAR(VARIANT, "Arduino variant for pins_arduino.h. (Default is 'standard')")
 AC_SUBST(VARIANT, [${VARIANT:-'standard'}])
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile Arduino.h wiring_digital.c wiring_pulse.c \
+                 wiring_analog.c Tone.cpp])
 AC_OUTPUT
