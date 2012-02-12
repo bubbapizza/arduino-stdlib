@@ -36,15 +36,16 @@ libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 ARDUINOLIB = libarduino.a
 
 # These headers are the headers that get installed so apps can link
-# to libarduino.h
+# to libarduino.h and some of the other libraries.  For example, Client.h
+# and Server.h are needed by libEthernet.
 ARDUINOHEADERS = Arduino.h binary.h WCharacter.h WString.h \
    HardwareSerial.h Stream.h USBAPI.h Print.h WString.h Printable.h \
-   variants/$(VARIANT)/pins_arduino.h 
+   Client.h Server.h IPAddress.h variants/$(VARIANT)/pins_arduino.h 
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
 ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
-   IPAddress.h Printable.h Stream.h USBCore.h new.h USBDesc.h  
+   Printable.h Stream.h USBCore.h new.h USBDesc.h Udp.h 
 
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
@@ -63,8 +64,8 @@ libEEPROM_a_SOURCES = EEPROM.cpp
 ####### ETHERNET ########
 
 ETHERNETLIB = libEthernet.a 
-ETHERNETHEADERS = Ethernet.h Client.h Server.h Udp.h 
-ETHERNETEXTRAHEADERS = w5100.h socket.h
+ETHERNETHEADERS = Ethernet.h EthernetClient.h EthernetServer.h 
+ETHERNETEXTRAHEADERS = socket.h 
 libEthernet_a_SOURCES = Ethernet.cpp Client.cpp Server.cpp Udp.cpp \
    utility/socket.cpp utility/w5100.cpp SPI.cpp
 
@@ -156,11 +157,11 @@ libWire_a_SOURCES = Wire.cpp utility/twi.c
 ####### INSTALLATION ########
 
 include_HEADERS = $(ARDUINOHEADERS) $(STEPPERHEADERS) \
-   $(ARDUINOTESTSUITEHEADERS) $(EEPROMHEADERS) $(ETHERNETHEADERS) \
+   $(EEPROMHEADERS) $(ETHERNETHEADERS) \
    $(SPIHEADERS) $(FIRMATAHEADERS) $(LIQUIDCRYSTALHEADERS) \
    $(MATRIXHEADERS) $(SPRITEHEADERS) $(SDHEADERS) $(SERVOHEADERS) \
    $(SOFTWARESERIALHEADERS) $(WIREHEADERS)
-libcpu_LIBRARIES = $(ARDUINOLIB) $(STEPPERLIB) $(ARDUINOTESTSUITELIB) \
+libcpu_LIBRARIES = $(ARDUINOLIB) $(STEPPERLIB) \
    $(EEPROMLIB) $(ETHERNETLIB) $(SPILIB) $(FIRMATALIB) \
    $(LIQUIDCRYSTALLIB) $(MATRIXLIB) $(SPRITELIB) $(SDLIB) $(SERVOLIB) \
    $(SOFTWARESERIALLIB) $(WIRELIB)
