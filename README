@@ -2,6 +2,17 @@ This is an autotools package for building and installing the arduino
 libraries.  It will install the libraries in a directory name based
 on the MMCU and MHz specified in the configure script.
 
+You may also specify the variant of the arduino.  Possible variants are:
+ standard
+ eightanaloginputs  
+ leonardo  
+ mega  
+ micro
+
+NOTE: As of Feb 16, 2012, the SoftwareSerial library has a bug in it and
+      will not compile for the leonardo variant.  You'll have to comment
+      it out in Makefile.am.
+
 To compile the libraries, you must have the following packages installed:
 
    gcc-avr
@@ -9,7 +20,7 @@ To compile the libraries, you must have the following packages installed:
 
 In a nutshell, to install the libraries, run the following commands:
 
-   ./configure --prefix=<installdir> MMCU=<mmcu-type> MHZ=<mmcu-speed-in-MHz>
+   ./configure --prefix=<installdir> VARIANT=<variant-type> MMCU=<mmcu-type> MHZ=<mmcu-speed-in-MHz>
    make
    sudo make install
 

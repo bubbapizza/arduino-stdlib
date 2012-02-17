@@ -38,14 +38,14 @@ ARDUINOLIB = libarduino.a
 # These headers are the headers that get installed so apps can link
 # to libarduino.h and some of the other libraries.  For example, Client.h
 # and Server.h are needed by libEthernet.
-ARDUINOHEADERS = Arduino.h binary.h WCharacter.h WString.h \
-   HardwareSerial.h Stream.h USBAPI.h Print.h WString.h Printable.h \
-   Client.h Server.h IPAddress.h variants/$(VARIANT)/pins_arduino.h 
+ARDUINOHEADERS = Arduino.h binary.h WCharacter.h HardwareSerial.h \
+   Stream.h USBAPI.h Print.h WString.h Printable.h  Client.h Server.h \
+   IPAddress.h variants/$(VARIANT)/pins_arduino.h Udp.h
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
 ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
-   Printable.h Stream.h USBCore.h new.h USBDesc.h Udp.h 
+   Printable.h Stream.h USBCore.h new.h USBDesc.h
 
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
@@ -64,10 +64,12 @@ libEEPROM_a_SOURCES = EEPROM.cpp
 ####### ETHERNET ########
 
 ETHERNETLIB = libEthernet.a 
-ETHERNETHEADERS = Ethernet.h EthernetClient.h EthernetServer.h 
-ETHERNETEXTRAHEADERS = socket.h 
-libEthernet_a_SOURCES = Ethernet.cpp Client.cpp Server.cpp Udp.cpp \
-   utility/socket.cpp utility/w5100.cpp SPI.cpp
+ETHERNETHEADERS = Dns.h util.h EthernetClient.h EthernetUdp.h \
+   EthernetServer.h Ethernet.h Dhcp.h
+ETHERNETEXTRAHEADERS = socket.h w5100.h
+libEthernet_a_SOURCES = Dhcp.cpp EthernetClient.cpp EthernetServer.cpp \
+   Dns.cpp Ethernet.cpp EthernetUdp.cpp utility/socket.cpp \
+   utility/w5100.cpp
 
 
 ####### FIRMATA ########
@@ -84,14 +86,6 @@ LIQUIDCRYSTALLIB = libLiquidCrystal.a
 LIQUIDCRYSTALHEADERS = LiquidCrystal.h
 LIQUIDCRYSTALEXTRAHEADERS = 
 libLiquidCrystal_a_SOURCES = LiquidCrystal.cpp
-
-
-####### MATRIX ########
-
-MATRIXLIB = libMatrix.a
-MATRIXHEADERS = Matrix.h
-MATRIXEXTRAHEADERS = 
-libMatrix_a_SOURCES = Matrix.cpp
 
 
 ####### SD ########
@@ -127,14 +121,6 @@ SPILIB = libSPI.a
 SPIHEADERS = SPI.h
 SPIEXTRAHEADERS = 
 libSPI_a_SOURCES = SPI.cpp
-
-
-####### SPRITE ########
-
-SPRITELIB = libSprite.a
-SPRITEHEADERS = Sprite.h
-SPRITEEXTRAHEADERS = 
-libSprite_a_SOURCES = Sprite.cpp
 
 
 ####### STEPPER ########

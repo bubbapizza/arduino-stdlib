@@ -149,5 +149,5 @@ AC_ARG_VAR(VARIANT, "Arduino variant for pins_arduino.h. (Default is 'standard')
 AC_SUBST(VARIANT, [${VARIANT:-'standard'}])
 
 AC_CONFIG_FILES([Makefile Arduino.h wiring_digital.c wiring_pulse.c \
-                 wiring_analog.c Tone.cpp])
+                 wiring_analog.c Tone.cpp SPI.cpp utility/twi.c])
 AC_OUTPUT
