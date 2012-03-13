@@ -40,12 +40,12 @@ ARDUINOLIB = libarduino.a
 # and Server.h are needed by libEthernet.
 ARDUINOHEADERS = Arduino.h binary.h WCharacter.h HardwareSerial.h \
    Stream.h USBAPI.h Print.h WString.h Printable.h  Client.h Server.h \
-   IPAddress.h variants/$(VARIANT)/pins_arduino.h Udp.h
+   IPAddress.h variants/$(VARIANT)/pins_arduino.h Udp.h new.h
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
 ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
-   Printable.h Stream.h USBCore.h new.h USBDesc.h
+   Printable.h Stream.h USBCore.h USBDesc.h
 
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
