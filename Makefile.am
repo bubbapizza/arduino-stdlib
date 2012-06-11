@@ -40,7 +40,13 @@ ARDUINOLIB = libarduino.a
 # and Server.h are needed by libEthernet.
 ARDUINOHEADERS = Arduino.h binary.h WCharacter.h HardwareSerial.h \
    Stream.h USBAPI.h Print.h WString.h Printable.h  Client.h Server.h \
-   IPAddress.h variants/$(VARIANT)/pins_arduino.h Udp.h new.h
+   IPAddress.h Udp.h new.h
+
+STANDARDPINHEADERS = variants/standard/pins_arduino.h 
+MICROPINHEADERS = variants/micro/pins_arduino.h 
+LEONARDOPINHEADERS = variants/leonardo/pins_arduino.h 
+EIGHTANALOGINPUTSPINHEADERS = variants/eightanaloginputs/pins_arduino.h 
+MEGAPINHEADERS = variants/mega/pins_arduino.h
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
@@ -157,6 +163,22 @@ libcpu_LIBRARIES = $(ARDUINOLIB) $(STEPPERLIB) \
 utildir=$(includedir)/utility
 util_HEADERS = $(SDUTILHEADERS) 
 
+#
+# All these directories and files are needed for different arduino
+# pin configurations.
+# 
+standarddir=$(includedir)/variants/standard
+standard_HEADERS=$(STANDARDPINHEADERS)
+microdir=$(includedir)/variants/micro
+micro_HEADERS=$(MICROPINHEADERS)
+megadir=$(includedir)/variants/mega
+mega_HEADERS=$(MEGAPINHEADERS)
+leonardodir=$(includedir)/variants/leonardo
+leonardo_HEADERS=$(LEONARDOPINHEADERS)
+eightanaloginputsdir=$(includedir)/variants/eightanaloginputs
+eightanaloginputs_HEADERS=$(EIGHTANALOGINPUTSPINHEADERS)
+
+
 # These are headers that we need for compiling but don't need to be
 # installed.
 EXTRA_DIST = $(ARDUINOEXTRAHEADERS) $(ARDUINOTESTSUITEEXTRAHEADERS) \
@@ -166,4 +188,4 @@ EXTRA_DIST = $(ARDUINOEXTRAHEADERS) $(ARDUINOTESTSUITEEXTRAHEADERS) \
 # When uninstalling, blow away the include/utility directory and the 
 # lib/mmcu-mhz directory.
 uninstall-hook:
-	rm -Rf $(utildir) $(libcpudir)
+	rm -Rf $(utildir) $(libcpudir) $(includedir)/variants
