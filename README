@@ -27,5 +27,17 @@ In a nutshell, to install the libraries, run the following commands:
 By default MMCU/MHZ defaults to atmega328p and 16 which is for an 
 Arduino Uno. 
 
+Here's a list of other possible boards and their corresponding MMCU, MHZ and 
+VARIANT values:
+
+Board                           MMCU         MHZ   VARIANT            
+--------------------------------------------------------------------
+Arduino Uno                     atmega328p   16    standard         
+Arduino Duemilanove             atmega328p   16    standard         
+Arduino Mega 2560 or Mega ADK   atmega2560   16    mega             
+Arduino Mega (ATMega1280)       atmega1280   16    mega             
+Arduino Nano                    atmega328p   16    eightanaloginputs
+
+
 Shawn Wilson
 Dec 2011
