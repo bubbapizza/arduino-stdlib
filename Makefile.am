@@ -30,6 +30,10 @@ ARFLAGS = rc
 # the CPU type they were compiled for.
 libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 
+# The include files will get installed in a directory named according
+# to the pin-variant type they were compiled for.
+includepindir = $(includedir)/arduino-$(VARIANT)
+
 
 ####### ARDUINO ########
 
@@ -148,7 +152,7 @@ libWire_a_SOURCES = Wire.cpp utility/twi.c
 
 ####### INSTALLATION ########
 
-include_HEADERS = $(ARDUINOHEADERS) $(STEPPERHEADERS) \
+includepin_HEADERS = $(ARDUINOHEADERS) $(STEPPERHEADERS) \
    $(EEPROMHEADERS) $(ETHERNETHEADERS) \
    $(SPIHEADERS) $(FIRMATAHEADERS) $(LIQUIDCRYSTALHEADERS) \
    $(MATRIXHEADERS) $(SPRITEHEADERS) $(SDHEADERS) $(SERVOHEADERS) \
@@ -160,22 +164,22 @@ libcpu_LIBRARIES = $(ARDUINOLIB) $(STEPPERLIB) \
 
 # This is special for SD because it needs a 'utility' subdirectory in the
 # include directory.
-utildir=$(includedir)/utility
+utildir=$(includepindir)/utility
 util_HEADERS = $(SDUTILHEADERS) 
 
 #
 # All these directories and files are needed for different arduino
 # pin configurations.
 # 
-standarddir=$(includedir)/variants/standard
+standarddir=$(includepindir)/variants/standard
 standard_HEADERS=$(STANDARDPINHEADERS)
-microdir=$(includedir)/variants/micro
+microdir=$(includepindir)/variants/micro
 micro_HEADERS=$(MICROPINHEADERS)
-megadir=$(includedir)/variants/mega
+megadir=$(includepindir)/variants/mega
 mega_HEADERS=$(MEGAPINHEADERS)
-leonardodir=$(includedir)/variants/leonardo
+leonardodir=$(includepindir)/variants/leonardo
 leonardo_HEADERS=$(LEONARDOPINHEADERS)
-eightanaloginputsdir=$(includedir)/variants/eightanaloginputs
+eightanaloginputsdir=$(includepindir)/variants/eightanaloginputs
 eightanaloginputs_HEADERS=$(EIGHTANALOGINPUTSPINHEADERS)
 
 
@@ -188,4 +192,4 @@ EXTRA_DIST = $(ARDUINOEXTRAHEADERS) $(ARDUINOTESTSUITEEXTRAHEADERS) \
 # When uninstalling, blow away the include/utility directory and the 
 # lib/mmcu-mhz directory.
 uninstall-hook:
-	rm -Rf $(utildir) $(libcpudir) $(includedir)/variants
+	rm -Rf $(utildir) $(libcpudir) $(includepindir)
