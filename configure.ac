@@ -38,7 +38,7 @@
 # the normal install process.
 #
 
-AC_INIT(arduino-stdlib, 1.0-0)
+AC_INIT(arduino-stdlib, 1.0.1-0)
 AC_PREREQ(2.59)
 
 # Set the default --host parameter to 'avr'.
@@ -147,7 +147,6 @@ AC_SUBST(MHZ, [${MHZ:-'16'}])
 # This is a new variable needed for pins_arduino.h variants.
 AC_ARG_VAR(VARIANT, "Arduino variant for pins_arduino.h. (Default is 'standard')")
 AC_SUBST(VARIANT, [${VARIANT:-'standard'}])
-AM_CONDITIONAL(NOT_LEONARDO, test $VARIANT != 'leonardo')
 
 AC_CONFIG_FILES([Makefile Arduino.h wiring_digital.c wiring_pulse.c \
                  wiring_analog.c Tone.cpp SPI.cpp utility/twi.c])

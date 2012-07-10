@@ -47,7 +47,6 @@ ARDUINOHEADERS = Arduino.h binary.h WCharacter.h HardwareSerial.h \
    IPAddress.h Udp.h new.h
 
 STANDARDPINHEADERS = variants/standard/pins_arduino.h 
-MICROPINHEADERS = variants/micro/pins_arduino.h 
 LEONARDOPINHEADERS = variants/leonardo/pins_arduino.h 
 EIGHTANALOGINPUTSPINHEADERS = variants/eightanaloginputs/pins_arduino.h 
 MEGAPINHEADERS = variants/mega/pins_arduino.h
@@ -119,17 +118,10 @@ libServo_a_SOURCES = Servo.cpp
 
 ####### SOFTWARESERIAL ########
 
-#
-# Software Serial lib seems to have a bug in it when compiled for 
-# Leonardo so only include it if the pin configuration is anything
-# but Leonardo.
-#
-if NOT_LEONARDO
 SOFTWARESERIALLIB = libSoftwareSerial.a
 SOFTWARESERIALHEADERS = SoftwareSerial.h
 SOFTWARESERIALEXTRAHEADERS = 
 libSoftwareSerial_a_SOURCES = SoftwareSerial.cpp
-endif
 
 
 ####### SPI ########
@@ -180,8 +172,6 @@ util_HEADERS = $(SDUTILHEADERS)
 # 
 standarddir=$(includepindir)/variants/standard
 standard_HEADERS=$(STANDARDPINHEADERS)
-microdir=$(includepindir)/variants/micro
-micro_HEADERS=$(MICROPINHEADERS)
 megadir=$(includepindir)/variants/mega
 mega_HEADERS=$(MEGAPINHEADERS)
 leonardodir=$(includepindir)/variants/leonardo
