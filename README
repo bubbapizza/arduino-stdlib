@@ -9,10 +9,6 @@ You may also specify the variant of the arduino.  Possible variants are:
  mega  
  micro
 
-NOTE: As of Feb 16, 2012, the SoftwareSerial library has a bug in it and
-      will not compile for the leonardo variant.  You'll have to comment
-      it out in Makefile.am.
-
 To compile the libraries, you must have the following packages installed:
 
    gcc-avr

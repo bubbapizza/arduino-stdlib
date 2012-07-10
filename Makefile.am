@@ -54,8 +54,8 @@ MEGAPINHEADERS = variants/mega/pins_arduino.h
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
-ARDUINOEXTRAHEADERS = wiring_private.h WConstants.h  Platform.h \
-   Printable.h Stream.h USBCore.h USBDesc.h
+ARDUINOEXTRAHEADERS = wiring_private.h  Platform.h Printable.h Stream.h \
+   USBCore.h USBDesc.h
 
 libarduino_a_SOURCES = HardwareSerial.cpp Tone.cpp WString.cpp \
    Print.cpp  WMath.cpp wiring_analog.c wiring_digital.c \
@@ -119,10 +119,17 @@ libServo_a_SOURCES = Servo.cpp
 
 ####### SOFTWARESERIAL ########
 
+#
+# Software Serial lib seems to have a bug in it when compiled for 
+# Leonardo so only include it if the pin configuration is anything
+# but Leonardo.
+#
+if NOT_LEONARDO
 SOFTWARESERIALLIB = libSoftwareSerial.a
 SOFTWARESERIALHEADERS = SoftwareSerial.h
 SOFTWARESERIALEXTRAHEADERS = 
 libSoftwareSerial_a_SOURCES = SoftwareSerial.cpp
+endif
 
 
 ####### SPI ########
