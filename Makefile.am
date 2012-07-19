@@ -23,9 +23,9 @@
 
 
 AM_CXXFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 \
-   -I variant/$(VARIANT) 
+   -I variants/$(VARIANT) 
 AM_CFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 \
-   -I variant/$(VARIANT)
+   -I variants/$(VARIANT)
 ARFLAGS = rc
 
 # The libraries will get installed in a directory named according to 
@@ -34,7 +34,7 @@ libcpudir = $(libdir)/$(MMCU)-$(MHZ)
 
 # The include files will get installed in a directory named according
 # to the pin-variant type they were compiled for.
-includepindir = $(includedir)/arduino-$(VARIANT)
+includepindir = $(includedir)/arduino
 
 
 ####### ARDUINO ########
