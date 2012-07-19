@@ -209,6 +209,6 @@ long map(long, long, long, long, long);
 
 #endif
 
-#include "variants/@VARIANT@/pins_arduino.h"
+#include "pins_arduino.h"
 
 #endif

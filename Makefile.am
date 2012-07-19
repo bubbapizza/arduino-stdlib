@@ -22,8 +22,10 @@
 #
 
 
-AM_CXXFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 
-AM_CFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 
+AM_CXXFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 \
+   -I variant/$(VARIANT) 
+AM_CFLAGS = -Wall -Os -mmcu=$(MMCU) -DF_CPU=$(MHZ)000000 \
+   -I variant/$(VARIANT)
 ARFLAGS = rc
 
 # The libraries will get installed in a directory named according to 
