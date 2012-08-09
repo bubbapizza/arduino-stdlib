@@ -52,6 +52,7 @@ STANDARDPINHEADERS = variants/standard/pins_arduino.h
 LEONARDOPINHEADERS = variants/leonardo/pins_arduino.h 
 EIGHTANALOGINPUTSPINHEADERS = variants/eightanaloginputs/pins_arduino.h 
 MEGAPINHEADERS = variants/mega/pins_arduino.h
+SANGUINOPINHEADERS = variants/sanguino/pins_arduino.h
 
 # These headers need to be included in the distribution so we can compile
 # the libarduino.a sources.
@@ -180,6 +181,8 @@ leonardodir=$(includepindir)/variants/leonardo
 leonardo_HEADERS=$(LEONARDOPINHEADERS)
 eightanaloginputsdir=$(includepindir)/variants/eightanaloginputs
 eightanaloginputs_HEADERS=$(EIGHTANALOGINPUTSPINHEADERS)
+sanguinodir=$(includepindir)/variants/sanguino
+sanguino_HEADERS=$(SANGUINOPINHEADERS)
 
 
 # These are headers that we need for compiling but don't need to be
